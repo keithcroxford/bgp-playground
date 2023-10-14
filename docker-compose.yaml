@@ -1,0 +1,67 @@
+services:
+  r01:
+    image: jauderho/gobgp:latest
+    container_name: r01
+    build: .
+    volumes:
+      - ./r01/etc:/etc/
+      - ./r01/logs:/var/log
+      - ./r01/config:/config
+    cap_add:
+      - CAP_SYS_ADMIN
+      - CAP_NET_ADMIN
+      - CAP_NET_RAW
+    networks:
+      external:
+        ipv4_address: 192.50.50.10
+      internal:
+        ipv4_address: 172.50.50.10
+
+  r02:
+    image: jauderho/gobgp:latest
+    container_name: r02
+    build: .
+    volumes:
+      - ./r02/etc:/etc/gobgp
+      - ./r02/logs:/var/log
+      - ./r02/config:/config
+    cap_add:
+      - CAP_SYS_ADMIN
+      - CAP_NET_ADMIN
+      - CAP_NET_RAW
+    networks:
+      external:
+        ipv4_address: 192.50.50.15
+      internal:
+        ipv4_address: 172.50.50.15
+
+  routesvr:
+    image: pierky/bird:latest
+    container_name: routesvr
+    volumes:
+      - ./routesvr/etc:/etc/bird
+      - ./routesvr/logs:/var/logs
+    cap_add:
+      - CAP_SYS_ADMIN
+      - CAP_NET_ADMIN
+      - CAP_NET_RAW
+    networks:
+      external:
+        ipv4_address: 192.50.50.20
+      internal:
+        ipv4_address: 172.50.50.20
+
+
+networks:
+    external:
+        # use the bridge driver, but enable IPv6
+        ipam:
+            config:
+                - subnet: 192.50.50.0/24
+                  gateway: 192.50.50.1
+    internal:
+        # use a custom driver, with no options
+        ipam:
+            config:
+                - subnet: 172.50.50.0/24
+                  gateway: 172.50.50.1

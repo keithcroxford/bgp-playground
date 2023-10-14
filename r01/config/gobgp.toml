@@ -1,0 +1,13 @@
+[global.config]
+  as = 65001
+  router-id = "192.50.50.10"
+
+[[neighbors]]
+  [neighbors.config]
+    neighbor-address = "192.50.50.15"
+    peer-as = 65002
+
+[[neighbors]]
+  [neighbors.config]
+    neighbor-address = "192.50.50.20"
+    peer-as = 65000
