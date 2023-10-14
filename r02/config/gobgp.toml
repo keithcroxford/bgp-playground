@@ -4,10 +4,5 @@
 
 [[neighbors]]
   [neighbors.config]
-    neighbor-address = "192.50.50.10"
-    peer-as = 65001
-
-[[neighbors]]
-  [neighbors.config]
     neighbor-address = "192.50.50.20"
     peer-as = 65000
