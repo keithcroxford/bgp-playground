@@ -1,6 +1,19 @@
 [global.config]
   as = 65001
   router-id = "192.50.50.10"
+  local-address-list = ["192.50.50.10"]
+
+[[vrfs]]
+    [vrfs.config]
+        name = "vrf1"
+        # If id is omitted, automatically assigned.
+        id = 1
+        rd = "65001:100"
+        # Each configuration for import and export RTs;
+        # import-rt-list
+        # export-rt-list
+        # are preferred than both-rt-list.
+        both-rt-list = ["65001:100"]
 
 [[neighbors]]
   [neighbors.config]
@@ -11,3 +24,12 @@
   [neighbors.config]
     neighbor-address = "192.50.50.20"
     peer-as = 65000
+  [neighbors.graceful-restart.config]
+    enabled = true
+    notification-enabled = true
+    long-lived-enabled = true
+    # graceful restart restart time
+    restart-time = 20
+
+
+
