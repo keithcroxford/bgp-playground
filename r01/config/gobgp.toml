@@ -15,10 +15,6 @@
         # are preferred than both-rt-list.
         both-rt-list = ["65001:100"]
 
-[[neighbors]]
-  [neighbors.config]
-    neighbor-address = "192.50.50.15"
-    peer-as = 65002
 
 [[neighbors]]
   [neighbors.config]
