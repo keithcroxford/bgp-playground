@@ -12,7 +12,7 @@ This repo provide an easy way to experiment with BIRD Internet Routing Daemon, a
 flowchart LR
     subnet["subnet `192.50.50.0/24`"]
     r01["`r01`"]
-    r02["`r01`"]
+    r02["`r02`"]
     routesvr["`routesvr`"]
     r01 --> subnet 
     r02 --> subnet
