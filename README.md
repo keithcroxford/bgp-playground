@@ -6,6 +6,18 @@ This repo provide an easy way to experiment with BIRD Internet Routing Daemon, a
 - r02 = GPBGP
 - routesvr = BIRD
 
+# Diagram
+
+```mermaid
+flowchart LR
+    subnet["`192.50.50.0/24`"]
+    r01["`r01`"]
+    r02["`r01`"]
+    routesvr["`routesvr`"]
+    r01 --> subnet 
+    r02 --> subnet
+    routesvr -> subnet 
+```
 
 # How to 
 1. Make sure you have a recent version of docker installed
