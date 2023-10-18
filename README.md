@@ -20,4 +20,14 @@ You can add routes into the GoBGP Routing Information base like this
 example:
 `docker exec r01 gobgp global rib add -a ipv4 10.10.20.0/21 nexthop 10.10.20.20 identifier 20`
 
-Keep in mind that these route will no longer be advertised after restarting the container! 
+Keep in mind that these route will no longer be advertised after restarting the container!
+
+# Adding routes with script
+- Dependencies: Have Python3.10 (or higher) installed on your local machine
+1. Add prefixes that you want to add to r01 and r02 into the file `scripts/prefixes.py`. There are a few prefixes already added to the list.
+2. Run `python3 scripts/inject_routes.py` 
+3. The script will randomly add the routes to r01 and r02 and print out the results. 
+
+Like the manually added routes, these routes will not remain after the container is restarted. 
+
+
