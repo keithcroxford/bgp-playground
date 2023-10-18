@@ -6,7 +6,7 @@ This repo provide an easy way to experiment with BIRD Internet Routing Daemon, a
 - r02 = GPBGP
 - routesvr = BIRD
 
-# Diagram
+# Diagrams
 
 ```mermaid
 flowchart LR
